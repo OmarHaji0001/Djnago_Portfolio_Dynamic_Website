@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block banner %}
+    <div class="image-container w-100" style="z-index: -1">
+        <img src="{{ banner.image.url }}" alt="{{ banner.alt_text }}" class="bannerStyle" width="100%">
+    </div>
+{% endblock banner %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Home Page</h1>
+        <p>Welcome to my portfolio website! This is the home page where you'll find an introduction and links to other sections.</p>
+    </div>
+{% endblock content %}

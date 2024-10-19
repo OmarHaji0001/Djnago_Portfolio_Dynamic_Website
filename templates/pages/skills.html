@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block banner %}
+    <div class="image-container w-100" style="z-index: -1">
+        <img src="{{ banner.image.url }}" alt="{{ banner.alt_text }}" class="bannerStyle" width="100%">
+    </div>
+{% endblock banner %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Skills</h1>
+        <p>This is the skills page where you'll find information about my professional skills and proficiencies.</p>
+    </div>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block banner %}
+    <div class="image-container w-100" style="z-index: -1">
+        <img src="{{ banner.image.url }}" alt="{{ banner.alt_text }}" class="bannerStyle" width="100%">
+    </div>
+{% endblock banner %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Contact Me</h1>
+        <p>This is the contact page. Feel free to reach out to me via the contact form or through my social media profiles.</p>
+    </div>
+{% endblock content %}
