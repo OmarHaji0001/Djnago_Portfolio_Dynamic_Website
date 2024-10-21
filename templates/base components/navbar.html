@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
     <div class="container-fluid">
         <!--Logo-->
-        <a class="navbar-brand fs-4" href="#">Omar's Portfolio</a>
+        <a class="navbar-brand fs-4" style="color: orange" href="{% url 'home' %}">Omar's Portfolio</a>
         <!--Toggle Btn-->
         <button class="navbar-toggler shadow-none border-0"
                 type="button"
@@ -18,7 +18,7 @@
         >
             <!--Sidebar Header-->
             <div class="offcanvas-header text-white border-bottom">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Omar's Portfolio</h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color: orange">Omar's Portfolio</h5>
                 <button
                         type="button"
                         class="btn-close btn-close-white shadow-none"
@@ -56,7 +56,7 @@
                     <a href="{% url 'download_cv' %}" class="text-white" target="_blank">Download My CV</a>
                     <a href="{% url 'contact' %}"
                        class="text-white text-decoration-none px-3 py-1 rounded-4"
-                       style="background-color: #81d4fa">Hire Me Now</a>
+                       style="background-color: orange">Hire Me Now</a>
                 </div>
             </div>
         </div>
