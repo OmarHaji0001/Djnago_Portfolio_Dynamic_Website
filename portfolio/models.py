@@ -7,7 +7,7 @@ class PersonalInfo(models.Model):
     fname = models.CharField(max_length=50, verbose_name='First Name')
     lname = models.CharField(max_length=50, verbose_name='Last Name')
     phone = models.CharField(max_length=15, verbose_name='Phone Number')
-    photo = models.ImageField(upload_to='images/%Y/%m/%d/%H/%M/%S/', verbose_name='Profile Picture')
+    photo = models.ImageField(upload_to='media/images/', verbose_name='Profile Picture')
     birthdate = models.DateField(verbose_name='Birth Date')
     job_title = models.CharField(max_length=50, verbose_name='Job Title')
     email = models.EmailField()
@@ -19,9 +19,9 @@ class PersonalInfo(models.Model):
     linkedin = models.URLField(blank=True, null=True)
     github = models.URLField(blank=True, null=True)
     about = RichTextField(verbose_name='About Me')
-    pdfCV = models.FileField(upload_to='pdf/%Y/%m/%d/%H/%M/%S/', verbose_name='PDF CV',
+    pdfCV = models.FileField(upload_to='media/pdfs/', verbose_name='PDF CV',
                              validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
-    logo = models.ImageField(upload_to='images/logo/%Y/%m/%d/%H/%M/%S/', verbose_name='Logo')
+    logo = models.ImageField(upload_to='media/logo/', verbose_name='Logo')
     availability = models.CharField(
         max_length=20,
         choices=[('available', 'Available'), ('not_available', 'Not Available')],
@@ -30,7 +30,6 @@ class PersonalInfo(models.Model):
 
     def __str__(self):
         return f"{self.fname} {self.lname}"
-
 
 class Project(models.Model):
     title = models.CharField(max_length=200)

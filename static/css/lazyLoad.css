@@ -1,0 +1,33 @@
+/* Loader Wrapper */
+.loader-wrapper {
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Optional background color */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+}
+
+/* Spinner CSS */
+.spinner {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #000;
+    -webkit-mask-image: -webkit-radial-gradient(circle closest-side at 50% 40%, transparent 94%, #000);
+    mask-image: radial-gradient(circle closest-side at 50% 40%, transparent 94%, #000);
+    transform-origin: 50% 40%;
+    animation: spinner-pl92zb 1s infinite linear;
+    position: relative; /* Keeps the spinner positioned within the flex container */
+}
+
+/* Keyframes for the spinner animation */
+@keyframes spinner-pl92zb {
+    100% {
+        transform: rotate(1turn);
+    }
+}

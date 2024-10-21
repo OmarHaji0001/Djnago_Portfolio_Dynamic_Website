@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
+import myPortfolio.context_processor
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -60,6 +62,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'myPortfolio.context_processor.personal_info',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -77,13 +80,23 @@ WSGI_APPLICATION = 'myPortfolio.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "myPortfolio",
-        "USER": "postgres",
-        "PASSWORD": "0010",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "NAME": "postgres",
+        "USER": "postgres.ittakydtwtenhkrzsllx",
+        "PASSWORD": "preezz502@@",
+        "HOST": "aws-0-eu-central-1.pooler.supabase.com",
+        "PORT": "6543",
     }
 }
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "myPortfolio",
+#         "USER": "postgres",
+#         "PASSWORD": "0010",
+#         "HOST": "127.0.0.1",
+#         "PORT": "5432",
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
