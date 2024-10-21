@@ -2,12 +2,17 @@ from django.shortcuts import render, get_object_or_404
 from django.http import FileResponse, Http404
 import os
 from django.conf import settings
-from .models import Banner
+from .models import Banner,Project
 
 
 def home(request):
+    projects = Project.objects.values('title', 'image')
     banner = get_object_or_404(Banner, page='home')
-    return render(request, 'pages/home.html', {'banner': banner})
+    context={
+        'projects':projects,
+        'banner':banner,
+    }
+    return render(request, 'pages/home.html', context)
 
 
 def about(request):
