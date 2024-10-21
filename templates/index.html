@@ -63,6 +63,12 @@
     $(window).on("load", function () {
         $(".loader-wrapper").fadeOut("slow");
     });
+    $(function () {
+        $(document).scroll(function () {
+            var $nav = $(".navbar"); // Select your navbar
+            $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        });
+    });
     document.addEventListener("DOMContentLoaded", function () {
         var typed = new Typed(".auto-type", {
             strings: ["Full-Stack Developer", "Django Developer", "Unity Developer", "Freelancer"],

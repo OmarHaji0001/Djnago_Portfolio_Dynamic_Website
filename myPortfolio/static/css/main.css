@@ -44,6 +44,20 @@ body {
     transform-origin: bottom left;
 }
 
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar.scrolled {
+    background-color: #212429 !important;
+    transition: background-color 200ms linear;
+}
+
 @media (max-width: 991px) {
     .sidebar {
         background-color: rgba(255, 255, 255, 0.15) !important;
