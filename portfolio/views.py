@@ -2,15 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from django.http import FileResponse, Http404
 import os
 from django.conf import settings
-from .models import Banner,Project
+from .models import Banner, Project
 
 
 def home(request):
     projects = Project.objects.values('title', 'image')
     banner = get_object_or_404(Banner, page='home')
-    context={
-        'projects':projects,
-        'banner':banner,
+    context = {
+        'projects': projects,
+        'banner': banner,
     }
     return render(request, 'pages/home.html', context)
 
@@ -21,8 +21,18 @@ def about(request):
 
 
 def projects(request):
+    projects = Project.objects.all()  # Fetch all projects from the database
     banner = get_object_or_404(Banner, page='projects')
-    return render(request, 'pages/projects.html', {'banner': banner})
+    context = {
+        'projects': projects,
+        'banner': banner,
+    }
+    return render(request, 'pages/projects.html', context)
+
+
+def project_detail(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    return render(request, 'pages/project_detail.html', {'project': project})
 
 
 def skills(request):
