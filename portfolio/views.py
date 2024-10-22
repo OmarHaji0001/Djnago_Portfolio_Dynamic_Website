@@ -6,7 +6,6 @@ from .models import Banner, Project
 
 
 def home(request):
-    projects = Project.objects.values('title', 'image')
     banner = get_object_or_404(Banner, page='home')
     context = {
         'projects': projects,
@@ -32,7 +31,8 @@ def projects(request):
 
 def project_detail(request, project_id):
     project = get_object_or_404(Project, id=project_id)
-    return render(request, 'pages/project_detail.html', {'project': project})
+    images = project.images.all()
+    return render(request, 'pages/project_detail.html', {'project': project, 'images': images})
 
 
 def skills(request):

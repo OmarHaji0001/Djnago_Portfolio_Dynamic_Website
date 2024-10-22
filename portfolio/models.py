@@ -31,16 +31,28 @@ class PersonalInfo(models.Model):
     def __str__(self):
         return f"{self.fname} {self.lname}"
 
+
 class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     tech_stack = models.CharField(max_length=300)
-    image = models.ImageField(upload_to='projects/')
+    image = models.ImageField(upload_to='projects/main_images/', blank=True, null=True)  # Using 'image' as the field name
     link = models.URLField(blank=True, null=True)
+    github_link = models.URLField(blank=True, null=True, verbose_name="GitHub Link")
     date_added = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.title
+
+
+class ProjectImage(models.Model):
+    project = models.ForeignKey(Project, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='projects/images/')
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+
+    def __str__(self):
+        return f"Image for {self.project.title}: {self.name}"
 
 
 class Skill(models.Model):

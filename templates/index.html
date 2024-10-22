@@ -36,7 +36,7 @@
 
 {% block content %}
 {% endblock content %}
-<div style="height: 950px"></div>
+<div style="height: 80px"></div>
 {% include 'base components/footer.html' %}
 
 <!-- Back To Top Button -->
@@ -70,6 +70,8 @@
     $(window).on("load", function () {
         $(".loader-wrapper").fadeOut("slow");
     });
+
+
     $(document).ready(function () {
         $('.owl-carousel').owlCarousel({
             loop: true,

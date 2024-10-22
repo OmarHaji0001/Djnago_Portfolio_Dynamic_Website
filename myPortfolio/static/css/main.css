@@ -55,7 +55,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 100;
     background-color: rgba(0, 0, 0, 0.4);
     transition: background-color 0.3s ease-in-out;
 }
@@ -89,11 +89,8 @@ body {
 }
 
 @media (max-width: 462px) {
-
-    @media (max-width: 576px) {
-        .text-highlight {
+     .text-highlight {
             font-size: 1rem;
             line-height: 1.3;
         }
-    }
 }
