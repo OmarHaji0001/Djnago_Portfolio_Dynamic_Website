@@ -1,15 +1,16 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from cloudinary.models import CloudinaryField
 from django.core.validators import FileExtensionValidator
 
 
 class PersonalInfo(models.Model):
-    fname = models.CharField(max_length=50, verbose_name='First Name')
-    lname = models.CharField(max_length=50, verbose_name='Last Name')
-    phone = models.CharField(max_length=15, verbose_name='Phone Number')
-    photo = models.ImageField(upload_to='media/images/', verbose_name='Profile Picture')
-    birthdate = models.DateField(verbose_name='Birth Date')
-    job_title = models.CharField(max_length=50, verbose_name='Job Title')
+    fname = models.CharField(max_length=50)
+    lname = models.CharField(max_length=50)
+    phone = models.CharField(max_length=15)
+    photo = CloudinaryField('image')
+    birthdate = models.DateField()
+    job_title = models.CharField(max_length=50)
     email = models.EmailField()
     country = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
@@ -18,10 +19,9 @@ class PersonalInfo(models.Model):
     instagram = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
     github = models.URLField(blank=True, null=True)
-    about = RichTextField(verbose_name='About Me')
-    pdfCV = models.FileField(upload_to='media/pdfs/', verbose_name='PDF CV',
-                             validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
-    logo = models.ImageField(upload_to='media/logo/', verbose_name='Logo')
+    about = RichTextField()
+    pdfCV = CloudinaryField('pdf', validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
+    logo = CloudinaryField('image')
     availability = models.CharField(
         max_length=20,
         choices=[('available', 'Available'), ('not_available', 'Not Available')],
@@ -36,9 +36,9 @@ class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     tech_stack = models.CharField(max_length=300)
-    image = models.ImageField(upload_to='projects/main_images/', blank=True, null=True)  # Using 'image' as the field name
+    image = CloudinaryField('image', blank=True, null=True)
     link = models.URLField(blank=True, null=True)
-    github_link = models.URLField(blank=True, null=True, verbose_name="GitHub Link")
+    github_link = models.URLField(blank=True, null=True)
     date_added = models.DateField(auto_now_add=True)
 
     def __str__(self):
@@ -47,7 +47,7 @@ class Project(models.Model):
 
 class ProjectImage(models.Model):
     project = models.ForeignKey(Project, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='projects/images/')
+    image = CloudinaryField('image')
     name = models.CharField(max_length=200)
     description = models.TextField()
 
@@ -78,7 +78,7 @@ class Testimonial(models.Model):
     name = models.CharField(max_length=200)
     role = models.CharField(max_length=200, blank=True, null=True)
     feedback = models.TextField()
-    image = models.ImageField(upload_to='testimonials/', blank=True, null=True)
+    image = CloudinaryField('image', blank=True, null=True)
     date_given = models.DateField()
 
     def __str__(self):
@@ -95,8 +95,8 @@ class Banner(models.Model):
     ]
 
     page = models.CharField(max_length=20, choices=PAGE_CHOICES, unique=True)
-    image = models.ImageField(upload_to='banners/')
-    alt_text = models.CharField(max_length=255, help_text="Alternative text for the banner image")
+    image = CloudinaryField('image')
+    alt_text = models.CharField(max_length=255)
 
     def __str__(self):
         return f"Banner for {self.get_page_display()}"
